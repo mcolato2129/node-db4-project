@@ -35,6 +35,13 @@ exports.up = async function(knex) {
         .inTable('steps')
         .onDelete('RESTRICT')
         .onUpdate('RESTRICT')
+    table.integer('ingredient_id')
+        .unsigned()
+        .notNullable()
+        .references('ingredient_id')
+        .inTable('ingredients')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
   })
 };
 
