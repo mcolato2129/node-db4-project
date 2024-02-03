@@ -6,6 +6,10 @@ server.use(express.json());
 
 server.use('/api/recipes', recipesRouter)
 
+server.use('*', (req, res)=> {
+    res.json('you hit me')
+})
+
 server.use('/', (req, res) => {
     res.send('really GOORRRD AIM')
 });

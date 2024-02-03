@@ -1,6 +1,17 @@
 const router = require('express').Router();
+const Recipe = require('./recipes-model')
 
-router.get('/', ( req, res) => {
+
+router.get('/:recipe_id', (req, res, next) => {//eslint-disable-line
+    Recipe.getRecipeById(req.params.recipe_id)
+    .then(resource => {
+        res.status(200).json(resource)
+    })
+    .catch(next)
+})
+
+
+router.use('/', ( req, res) => {
     res.send(`You got this just keep working everyday insha'Allah`)
 })
 
